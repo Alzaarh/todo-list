@@ -12,9 +12,15 @@ exports.signup = (req, res) => {
     User.unique(req.body.email)
         .then(result => {
             if (result) {
-                console.log('ok');
+                const user = new User(req.body.email, req.body.password);
+                return user.save();
             } else {
-                console.log('nok');
+                return res.redirect('/auth/signup');
+            }
+        })
+        .then(result => {
+            if (result) {
+                console.log('ok');
             }
         })
         .catch(err => {
