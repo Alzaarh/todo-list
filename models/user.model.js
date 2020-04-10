@@ -52,6 +52,23 @@ class User {
             });
         });
     }
+
+    static find(email) {
+        return new Promise((resolve, reject) => {
+            fs.readFile(filePath, 'utf-8', (err, data) => {
+                if (err) {
+                    reject(err);
+                }
+                const users = data ? JSON.parse(data) : [];
+                const found = users.filter(user => user.email === email);
+                if (found.length > 0) {
+                    resolve(found[0]);
+                } else {
+                    resolve(null);
+                }
+            });
+        });
+    }
 };
 
 module.exports = User;

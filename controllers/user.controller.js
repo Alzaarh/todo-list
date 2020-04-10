@@ -27,3 +27,18 @@ exports.signup = (req, res) => {
             res.redirect('/auth/signup');
         });
 };
+
+exports.signin = (req, res) => {
+    User
+        .find(req.body.email)
+        .then(user => {
+            if (user.password !== req.body.password) {
+                res.redirect('/auth/signin');
+            } else {
+                console.log('ok');
+            }
+        })
+        .catch(err => {
+            res.redirect('/auth/signin');
+        })
+};
