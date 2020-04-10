@@ -4,8 +4,8 @@ exports.getSignup = (req, res) => {
     res.render('signup');
 };
 
-exports.signin = (req, res) => {
-    console.log('there');
+exports.getSignin = (req, res) => {
+    res.render('signin');
 };
 
 exports.signup = (req, res) => {

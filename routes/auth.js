@@ -2,13 +2,13 @@ const router = require('express').Router();
 
 const {
     getSignup,
-    signin,
+    getSignin,
     signup,
 } = require('../controllers/user.controller');
 
 router.get('/signup', getSignup);
 
-router.get('/signin', signin);
+router.get('/signin', getSignin);
 
 router.post('/signup', signup);
 
